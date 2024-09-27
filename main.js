@@ -9,17 +9,21 @@ btn.addEventListener('click', () => {
 
 // videoları ekrana geldiği anda oynatma
 document.addEventListener('DOMContentLoaded', function () {
-    const videos = document.querySelectorAll('video');
+    const videos = document.querySelectorAll("video");
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.targer.play();
+                entry.target.play();
+                entry.target.addEventListener("ended", () => {
+                    entry.target.currentTime = 0;
+                    entry.target.play();
+                });
             } else {
                 entry.target.pause();
             }
         });
     });
     videos.forEach((video) => {
-        observer.observer(video);
-    })
-})
+        observer.observe(video);
+    });
+});

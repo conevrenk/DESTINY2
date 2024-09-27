@@ -35,6 +35,12 @@ button {
   padding: 7px 20px;
   font-size: 16px;
   border-radius: 16px;
+  transition: all 0.3s;
+
+}
+html{
+  /* linklere tıklandıgında gecişi yumuşatır */
+  scroll-behavior: smooth;
 }
 
 /* ana stiller */
@@ -57,7 +63,7 @@ header {
   position: sticky;
   top: 0;
   background: var(--black);
-  z-index: 1000;
+  z-index: 999;
 }
 
 header .nav-btn {
@@ -73,7 +79,7 @@ header nav .spec-link {
 
 /* footer */
 footer {
-  margin-top: 400px;
+  margin-top: 100px;
   padding: 20px;
 }
 footer .links {
@@ -215,10 +221,116 @@ section{
 
 .card video{
 width: 200px;
+}
+  /* kartlar alanı */
+  .cards{
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
 
+  }
+  .card{
+    max-width: 400px;
+  }
+
+/*! liste Alanı  */
+ #list-sec{
+  margin: 50px 0;
+  
+ }
+
+ #list-sec .info{
+  display: flex;
+  border: 1px solid orange;
+  justify-content: space-between;
+  gap: 40px;
+ }
+ #list-sec .info h2, .info p {
+  max-width: 400px;
+ }
+
+
+ 
+
+ #list-sec ul li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 40px;
+ }
+
+ #list-sec ul li h1 span { 
+  color: gray;
+  font-weight: 400;
+  font-size: 15px;
+  margin-bottom: 5px;
+
+ }
+ #list-sec ul li img{
+  border: 1px solid rgb(225, 233, 8);
+  width: 50px;
+ }
+/* !projeler sayfası */
+.welcome{
+  font-size: 56px;
+  max-width: 1300px;
+  padding: 100px;
+  background-image: linear-gradient( 109.6deg,  rgba(228,107,232,1) 11.2%, rgb(193, 6, 250) 96.7% );
+  /* arkaplanı yazıya aktarma */
+  /* yazıya aktardıgımız arkaplanı gösterme */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* responsive yapı */
+#what-sec{
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+#what-sec .info{
+  max-width: 400px;
+}
+#what-sec .info h1{
+  margin-bottom: 50px;
+}
+#what-sec .cards{
+  display: flex;
+  gap: 100px;
+}
+#what-sec .cards .what-card{
+  min-width: 200px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  background-color: #323443;
+  border-radius: 10px;
+  padding: 30px 20px;
+  position: relative;
+}
+#what-sec .cards .what-card img{
+  position: absolute;
+  width: 50px;
+  top: -50px;
+}
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+*/
+/*! responsive yapı */
 @media (max-width:1200px){
     /* pencereler */
 #window-sec{
@@ -228,6 +340,23 @@ width: 200px;
 .window{
     height: 300px;
 } 
+/* what-sec alanı */
+#what-sec{
+  flex-direction: column;
+  gap: 50px;
+}
+#what-sec .info{
+  display: flex;
+  gap: 40px;
+  max-width: unset;
+}
+#what-sec .info h1{
+  white-space: nowrap;
+}
+#what-sec .info p{
+  max-width: unset;
+}
+
 }
 @media (max-width: 1000px) {
   footer .links {
@@ -243,20 +372,14 @@ width: 200px;
   footer form input {
     max-width: 200px;
   }
-  footer .links .link-area:nth-child(even) {
-    /* text-align: end; */
+  /* projeler sayfası */
+  .welcome{
+    padding: 100px 20px;
+    font-size: 40px;
   }
-  /* kartlar alanı */
-  .cards{
-    grid-template-columns: 1fr;
-    place-items: center;
 
-  }
-  .card{
-    max-width: 400px;
-  }
-}
-@media (max-width: 800px) {
+
+  @media (max-width: 800px) {
     header nav {
       display: none;
     }
@@ -281,7 +404,23 @@ width: 200px;
     #hero-inner {
       margin: 40px;
     }
+    #list-sec{
+      padding: 30px;
+    }
+    #list-sec .info{
+      flex-direction: column;
+    }
+    #list-sec .info h2, .info p {
+      /* bu stile hiç değer atamsı yapılmamış gibi davranır */
+      max-width: unset;
+    }
+    #what-sec .info{
+      flex-direction: column;
+      gap: 0px !important;
+    }
+    
   }
+
 @media (max-width: 500px) {
   footer .links {
     padding: 5px;
